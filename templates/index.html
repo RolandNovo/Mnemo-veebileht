@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--<title>Change Text</title>!-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- Load custom CSS -->
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='button_update.js')}}"></script>
+
+
+</head>
+
+<body>
+    <nav class="navbar-bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Mnemo</a>
+        </div>
+    </nav>
+    <div class="container my-4">
+            <div class="card-body">
+                <form method="post">
+                    <div class="card-input">
+                        {% if not old_text %}
+                        <textarea class="kasutaja-sisend" id="text" name="text" rows="6" maxlength="6000" placeholder="Sisestage tekst">{{ old_text | safe }}</textarea>
+                        {% endif %}
+                        <div class="karakteri-valik">
+                            <div id="checkbox-section" class="valik-section">
+                                {% if karakteri_nimi %}
+                                    <input class="checkbox-karakter" checked type="checkbox" id="dialoog" name="dialoog" value="tegelane">
+                                    <label class="label-karakter" for="dialoog">Minu tegelane:</label>
+                                    <textarea class="textarea-karakter" id="karakter" name="karakter" rows="1">{{ karakteri_nimi | safe }}</textarea>
+                                {% endif %}
+                                {% if not karakteri_nimi %}
+                                    <input class="checkbox-karakter" type="checkbox" id="dialoog" name="dialoog" value="tegelane">
+                                    <label class="label-karakter" for="dialoog">Minu tegelane:</label>
+                                    <textarea class="textarea-karakter" id="karakter" name="karakter" rows="1"></textarea>
+                                {% endif %}
+                            </div>
+                            <div class=""></div>
+                            <div id="text-hash-section" class="valik-section">
+                                <select class="dropdown-eelmised" name="eelmised-tekstid" id="eelmised-tekstid">
+                                    <option value="none" selected> - </option>
+                                    <option value="valik1"> Leelo Tungal </option>
+                                    <option value="valik2"> Näidendi tekst </option>
+                                    {% if dropdown %}
+                                        {% for valik in dropdown %}
+                                            <option value="{{valik}}">{{valik}}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                                {% if hash_tunnus %}
+                                <textarea class="textarea-hash" id="hashid" name="hashid" rows="1">{{ hash_tunnus | safe }}</textarea>
+                                {% endif %}
+                                {% if not hash_tunnus %}
+                                <textarea class="textarea-hash" id="hashid" name="hashid" rows="1"></textarea>
+                                {% endif %}
+                                <button class="login-button" type="submit" name="hash-nupp" value="hash-nupp">Logi sisse</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-change-button">
+                        <button class="btn btn-primary" type="submit" name="action" value="tähed">Esitähed</button>
+                        <button class="btn btn-primary" type="submit" name="action" value="sõnad">Esisõnad</button>
+                        <button class="btn btn-primary" type="submit" name="action" value="read">Esiread</button>
+                        <button class="btn btn-primary" type="submit" name="action" value="tühjus">Tühjus</button>
+                    </div>
+                </form>
+                {% if new_text %}
+                    <p id="formated-text">{{ new_text | safe }}</p>
+                    {% if karakteri_nimi %}
+                        <button class="btn btn-primary btn-block" id="eelmine_tekst">Eelmine</button>
+                        <button class="btn btn-primary btn-block" id="järgmine_tekst">Järgmine</button>
+                    {% endif %}
+                    <label>TÜ kõnetuvastus:</label>
+                    <button class="btn btn-primary btn-block" id="streaming_record">Alusta</button>
+                    <button class="btn btn-primary btn-block" id="streaming_stop">Peata</button>
+                    <label>Google'i kõnetuvastus:</label>
+                    <button class="btn btn-primary btn-block" id="recordButton">Alusta</button>
+                    <!-- <button class="btn btn-primary btn-block" id="pauseButton" disabled>Paus</button> -->
+                    <button class="btn btn-primary btn-block" id="stopButton" disabled>Peata</button>
+                    <div>
+                        <label for="results" class="form-label">Transkribeeritud tekst</label>
+                        <textarea disabled class="form-results" id="results" rows="8"></textarea>
+                    </div>
+                    <div>
+                        <label for="MyTextarea" class="form-label">Hinnang</label>
+                        <textarea disabled class="form-hinnang" id="MyTextarea" rows="8"></textarea>
+                    </div>
+                    <script src="{{url_for('static', filename='streaming_record.js')}}"></script>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                {% if not new_text %}
+                    <p>Lehe kasutamiseks sisestage lehe alguses olevasse "Sisestage tekst" lahtrisse enda õpitav tekst, seda kas trükkides või sinna kopeerides.</p>
+                    <p>Veebileht töötab kahes režiimis:<br>1) tervikteksti õppimine, mille käigus hinnatakse kõike õpitavat korraga;<br>2) dialoogi õppimine, mille käigus küsitakse ainult ühe osapoole teksti (pange linnuke "Minu tegelane" ette ning kirjutage lahtrisse oma tegelase nimi. Näidistekstis: Autor või Kasutaja)</p>
+                    <p>Seejärel tuleb klõpsata ühel nupul neljast ja saategi hakata õppima!<br> Vihje! Nupud töötavad nii:<br>&emsp;&emsp;Esitähed - näed vaid esimest kahte tähte igast sõnast<br>&emsp;&emsp;Esisõnad - Näed iga rea esimest sõna ainult<br>&emsp;&emsp;Esiread - Näed iga lõigu esimest rida<br>&emsp;&emsp;Tühjus - Ei näe mitte midagi!</p>
+                    <p>NB! "Minu tegelane" võimalustest paremal pool on näha "Logi sisse" võimalust. Kui kasutate lehte, genereeritakse teile kasutajatunnus numbrite kujul või saate ise valida sobiva numbri. Jätke see kindlasti meelde, kui soovite järgmine kordki kasutada oma sisestatud tekste.<br>Veebileht salvestab tekste võttes nendest esimesed 20 tähemärki ja pannes need faili nimeks. Kui failinimed peaksid kattuma, siis uus tekst ei salvestu!<br>Kui soovid Leelo Tungla luuletust endale väiksemateks tükkideks teha, võid panna teksti algusesse number 1, järgmisele osale number 2 ja nii edasi!</p>
+                {% endif %}
+                {% if new_text %}
+                    <p>Nüüd, kui tekst on sisestatud ja töödeldud, tuleb kasutada üht kahest võimalusest hääle tuvastuseks!
+                        Testi mõlemat!</p>
+                        <a href="{{ url_for('index') }}" class="btn btn-primary btn-block" id="algusesseButton">Algusesse</a>
+                {% endif %}
+            </div>
+    </div>
+    <!-- Load Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+    <!-- Added for google_record -->
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="{{url_for('static', filename='google_record.js')}}"></script>
+</body>
+
+</html>
