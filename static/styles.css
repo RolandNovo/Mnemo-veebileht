@@ -1,0 +1,143 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    display: grid;
+    background-color: rgb(200, 232, 247);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar-bg-light {
+    background-color: rgb(200, 232, 247);
+}
+
+.navbar-brand {
+    position: absolute;
+    margin-top: 0.5%;
+    margin-left: 0.5%;
+    color: black;
+}
+
+.card-body {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.card-input {
+    width: auto;
+}
+
+.kasutaja-sisend {
+    padding: 1em;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    border-color: #999;
+    outline: none;
+    font-family: sans-serif;
+    resize: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 8px, 8px, 8px, 8px;
+    height: 140px;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.kasutaja-sisend:hover {
+    cursor: pointer;
+    border-color: #007bff
+
+}
+
+.kasutaja-sisend:focus {
+    cursor: text;
+    color: #333;
+    background-color: white;
+    border-color: #007bff;
+    box-shadow: 0 0 11px #99bee5;
+}
+
+.karakteri-valik {
+    display: flex;
+    margin-top: 1vmin;
+}
+
+.karakteri-valik > .valik-section {
+    display: flex;
+}
+
+.checkboc-section {
+    flex-grow: 1;
+}
+
+.label-karakter {
+    margin-top: 1%;
+}
+
+.checkbox-karakter, 
+.label-karakter, 
+.textarea-karakter {
+    margin-left: 5px;
+}
+
+.textarea-karakter,
+.textarea-hash {
+    resize: none;
+}
+
+#text-hash-section {
+    flex-grow: 1;
+    justify-content: end;
+    display: flex;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-right: 5px;
+}
+
+.login-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.card-change-button {
+    display: flex;
+    margin-top: 1vmin;
+    margin-bottom: 1vmin;
+    margin-left: 5px;
+}
+
+.form-results,
+.form-hinnang {
+    background-color: #ddd;
+    color: #666;
+    margin: 8px, 8px, 8px, 8px;
+    width: 100%;
+    resize: none;
+}
+
+.form-results {
+    height: 50px;
+}
+.form-hinnang {
+    height: 30px;
+}
+
+.audio-recorder {
+    text-align: center;
+}
+
+.record-button {
+    margin: auto;
+    width: 50%;
+}
