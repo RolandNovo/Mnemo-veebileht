@@ -1,0 +1,7 @@
+Flask 		        => pip install -U Flask
+SpeechRecognition   => pip install SpeechRecognition
+PyAudio		        => pip install PyAudio
+fuzzywuzzy	        => pip install fuzzywuzzy
+python-Levenshtein  => pip install levenshtein
+estnltk 1.7.1	    => pip install estnltk==1.7.1
+pandas              => pip install pandas
