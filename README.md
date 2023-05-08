@@ -6,39 +6,45 @@ Järgnevalt on toodud välja erinevate failide lühikirjeldused.
 
 ## static/*
 Siin kaustas on JS ja CSS failid.
-### button_update.js
+#### button_update.js
 Lisab salvestatud tekstide rippmenüüsse kasutaja tekstid.
-### google_record.js
+#### google_record.js
 Tegeleb Google'i kõnetuvastuse jaoks kasutaja heli salvestamisega. See võeti internetist, lisati ainult üks funktsioon, mis saadab andmed Flaskile.
-### streaming_record.js
+#### streaming_record.js
 See on Rauno Jaaska jt Tartu Ülikooli kõnetuvastus JS-s. Koodis on kommenteeritud kohad, mis muudeti või lisati Mnemo veebilehe jaoks
 
-## hash_menüü_seostuv.py
-Kontrollib, kas kasutajatunnus eksisteerib ja olenevalt sellest kasutajale saab ligi oma eelnevalt salvestatud tekstidele
-
-## hindamine.py
-Muudab sarnasemaks kasutaja ja kõnetuvastuse saadud tulemusi. Samuti annab kasutajale hinnangu.
-
-## failid.py
+### failid.py
 See file tegeleb failidesse kirjutamisega, sellega salvestatakse uued tekstid ja hoitakse järge, kus kasutaja oma arenguga on Dialoogi režiimi kasutamisel.
 Kasutus oleneb operatsioonisüsteemist, üle vaadata muutuja "full_path" ja valida, kus see peaks asuma, nt print(os.getcwd()) sobib asukohaks, aga lihtsalt see command võib tekitada probleeme, all täpsemalt.
 
-## vajalikud teegid.txt
-vajalikud teegid on olemas selles failis
+### flask_app.py
+Flaski file, et veebilehte käivitada. Siin tegeletakse lehe loogika ja Pythoni ja HTML/JS vahel info vahendamisega.
 
-## tuvastustest.py
-tegeleb Google'i kõnetuvastuse korral mikrofoni kuulamisega.
+### hash_menüü_seostuv.py
+Kontrollib, kas kasutajatunnus eksisteerib ja olenevalt sellest kasutajale saab ligi oma eelnevalt salvestatud tekstidele
 
-## vaartustamine.py
-võtab õpitava teksti ja kasutaja sisendi (voice_input()) ja otsib sealt kõige rohkem klappiva variandi, ning annab tagasisidet kasutajale kui täpselt ta teksti ette luges.
+### hindamine.py
+Muudab sarnasemaks kasutaja ja kõnetuvastuse saadud tulemusi. Samuti annab kasutajale hinnangu.
 
-## kaotamine.py
+### info_tekstiks.py
+Klassi fail "Dialoogi režiimi" jaoks veebilehel.
+
+### kaotamine.py
 võtab tekstsisendi ja muudab seda enne kasutajale näitamist. Hetkel on olemas esimene_rida(), esimene_sõna(), esimene_täht() ja tühjus() meetodid.
 
-## parandamine.py
+### parandamine.py
 võtab erinevad kuuldud laused ja paneb neist kokku kõige lähedasema versiooni algtekstile, lootuses parandada kasutaja kogemust.
 
-## valik1 ja valik2
+### tuvastustest.py
+tegeleb Google'i kõnetuvastuse korral mikrofoni kuulamisega.
+
+### vaartustamine.py
+võtab õpitava teksti ja kasutaja sisendi (voice_input()) ja otsib sealt kõige rohkem klappiva variandi, ning annab tagasisidet kasutajale kui täpselt ta teksti ette luges.
+
+### vajalikud teegid.txt
+vajalikud teegid on olemas selles failis
+
+### valik1 ja valik2
 Näitetekstid kasutajale veebilehe testimiseks.
 
 ## Lehekülje ülesseadmisel nõuanded
