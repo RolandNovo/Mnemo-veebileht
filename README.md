@@ -4,26 +4,26 @@ Tartu Ülikooli bakalaureuse lõputöö raames valminud abistav veebileht teksti
 Veebilehte hoiustatakse PythonAnywhere leheküljel, ja siia lisatud failid on kujul, nagu nad on PythonAnywhere leheküljel. Lehekülje ülesseadmiseks omaenda arvutis tutvuge "Lehekülje ülesseadmisel nõuanded" osaga allpool
 Järgnevalt on toodud välja erinevate failide lühikirjeldused.
 
-##failid.py
+## failid.py
 See file tegeleb failidesse kirjutamisega, sellega salvestatakse uued tekstid ja hoitakse järge, kus kasutaja oma arenguga on Dialoogi režiimi kasutamisel.
 Kasutus oleneb operatsioonisüsteemist, üle vaadata muutuja "full_path" ja valida, kus see peaks asuma, nt print(os.getcwd()) sobib asukohaks, aga lihtsalt see command võib tekitada probleeme, all täpsemalt.
 
-##vajalikud teegid.txt
+## vajalikud teegid.txt
 vajalikud teegid on olemas selles failis
 
-##tuvastustest.py
+## tuvastustest.py
 tegeleb Google'i kõnetuvastuse korral mikrofoni kuulamisega.
 
-##vaartustamine.py
+## vaartustamine.py
 võtab õpitava teksti ja kasutaja sisendi (voice_input()) ja otsib sealt kõige rohkem klappiva variandi, ning annab tagasisidet kasutajale kui täpselt ta teksti ette luges.
 
-##kaotamine.py
+## kaotamine.py
 võtab tekstsisendi ja muudab seda enne kasutajale näitamist. Hetkel on olemas esimene_rida(), esimene_sõna(), esimene_täht() ja tühjus() meetodid.
 
-##kasutamine.py
+## kasutamine.py
 paneb kõik kenamini kokku veebilehe kasutamise laadseks simulatsiooniks.
 
-##parandamine.py
+## parandamine.py
 võtab erinevad kuuldud laused ja paneb neist kokku kõige lähedasema versiooni algtekstile, lootuses parandada kasutaja kogemust
 
 ## Lehekülje ülesseadmisel nõuanded
