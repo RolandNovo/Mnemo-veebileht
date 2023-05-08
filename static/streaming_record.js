@@ -1,6 +1,5 @@
-// Kood on võetud Rauno Jaaska eestikeelse kõne transkribeerimisserveri demost
-// modification for Flask <=> Javascript
-// import { processTextData } from './flaskAndJavascript.js';
+// Kood on võetud Rauno Jaaska jt eestikeelse kõne transkribeerimisserveri demost
+// Failis on tehtud muudatusi, mis on välja toodud kommentaaridega
 
 // This is a modified version of streaming_record.js from k2-fsa/sherpa
 // https://github.com/k2-fsa/sherpa/blob/master/sherpa/bin/web/js/streaming_record.js
@@ -65,9 +64,9 @@ function initWebSocket() {
 
 const recordBtn = document.getElementById('streaming_record');
 const stopBtn = document.getElementById('streaming_stop');
-const googleTranscBtn = document.getElementById('transcBtn'); // lisatud Rolandi poolt
-const eelmineBtn = document.getElementById('eelmine_tekst');
-const järgmineBtn = document.getElementById('järgmine_tekst');
+const googleTranscBtn = document.getElementById('transcBtn'); // lisatud Mnemo veebilehe jaoks
+const eelmineBtn = document.getElementById('eelmine_tekst'); // lisatud Mnemo veebilehe jaoks
+const järgmineBtn = document.getElementById('järgmine_tekst'); // lisatud Mnemo veebilehe jaoks
 
 stopBtn.disabled = true;
 
@@ -174,7 +173,8 @@ if (navigator.mediaDevices.getUserMedia) {
             stopBtn.disabled = true;
             recordBtn.disabled = false;
             console.log('recorder stopped');
-
+            
+             // fetch on lisatud Mnemo veebilehe jaoks
             fetch('/process-text', {
                     method: 'POST',
                     headers: {
@@ -187,18 +187,14 @@ if (navigator.mediaDevices.getUserMedia) {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    // Update page with processed text data
                     let after_proc_text_area = document.getElementById('MyTextarea');
-                    //after_proc_text_area.value = data[0] + data[1]
                     after_proc_text_area.value = data
-                        // console.log(after_proc_text_area);
                 })
                 .catch(error => {
                     console.error(error);
                 });
         };
-        eelmineBtn.onclick = function() {
-            // Send text data to Flask application
+        eelmineBtn.onclick = function() {  // lisatud Mnemo veebilehe jaoks
             console.log('eelmine button clicked');
             fetch('/eelmine-text', {
                     method: 'POST',
@@ -212,23 +208,19 @@ if (navigator.mediaDevices.getUserMedia) {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    // Update page with processed text data
                     let text = document.getElementById('formated-text');
                     if (text.innerHTML === data) {
                         eelmineBtn.disabled = true;
                     } else {
                         järgmineBtn.disabled = false;
                     }
-                    //after_proc_text_area.value = data[0] + data[1]
                     text.innerHTML = data
-                        // console.log(after_proc_text_area);
                 })
                 .catch(error => {
                     console.error(error);
                 });
         };
-        järgmineBtn.onclick = function() {
-            // Send text data to Flask application
+        järgmineBtn.onclick = function() {  // lisatud Mnemo veebilehe jaoks
             console.log('järgmine button clicked');
             fetch('/järgmine-text', {
                     method: 'POST',
@@ -242,7 +234,6 @@ if (navigator.mediaDevices.getUserMedia) {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    // Update page with processed text data
                     let text = document.getElementById('formated-text');
                     if (text.innerHTML === data) {
                         järgmineBtn.disabled = true;
@@ -250,9 +241,7 @@ if (navigator.mediaDevices.getUserMedia) {
                         eelmineBtn.disabled = false;
                     }
                     console.log(text)
-                    //after_proc_text_area.value = data[0] + data[1]
                     text.innerHTML = data
-                        // console.log(after_proc_text_area);
                 })
                 .catch(error => {
                     console.error(error);
